@@ -9,27 +9,29 @@ import (
 	"github.com/yuin/goldmark"
 )
 
-func MarkdownToHTML(markdown string) string {
+func MarkdownToHTML(markdown []byte) []byte {
 	var buf bytes.Buffer
 	if err := goldmark.Convert([]byte(markdown), &buf); err != nil {
 		log.Fatal(err)
 	}
 
-	return buf.String()
+	return buf.Bytes()
 }
 
 func main() {
-	// Markdown sample
-	markdown := "# Hello, World!\nThis is a **Markdown** test."
+	inputPath := "io/01-input.md"
+	outputPath := "io/output.html"
+
+	mdBytes, err := os.ReadFile(inputPath)
+	if err != nil {
+		log.Fatalf("Failed to read %s: %v", inputPath, err)
+	}
 
 	// Convert Markdown to HTML
-	html := MarkdownToHTML(markdown)
-
-	// Print result
-	fmt.Println(html)
-
-	err := os.WriteFile("output.html", []byte(html), 0644)
-	if err != nil {
-		log.Fatal(err)
+	html := MarkdownToHTML(mdBytes)
+	if err := os.WriteFile(outputPath, html, 0644); err != nil {
+		log.Fatalf("Failed to write %s: %v", outputPath, err)
 	}
+
+	fmt.Println("HTML written to ", outputPath)
 }

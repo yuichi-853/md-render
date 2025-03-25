@@ -1,0 +1,594 @@
+<h1><strong>Python講座 1 - Review 1~5</strong></h1>
+<p><strong>2024年12月9日</strong>
+<!-- raw HTML omitted -->
+<strong>角田雄一</strong></p>
+<!-- raw HTML omitted -->
+<h1>試験対策について</h1>
+<p>推奨する勉強法としては、まずこのテキストと解説動画を見て、大まかな内容を把握する。そして、Stevensの授業スライドを最初から読んでいき、スライドにある練習問題を一つずつ解いていく。
+<!-- raw HTML omitted -->
+プログラミングを学ぶ際には、どうしても言葉で説明されてもイメージしにくい概念が多く登場する。そのため、プログラミングをマスターするためには、自分で手を動かしてコードを書くことが何よりも重要である。だから、テキストを読み込むということより、コーディングの問題を解くことに重点をおいてほしい。
+<!-- raw HTML omitted -->
+そもそもPythonは比較的簡単な言語であるとはいえ、通常習得には数ヶ月はかかる。だから勉強スケジュールを考えると相当ヤバめ。そのためテスト対策には緊張感を持って取り組んで欲しい。
+<!-- raw HTML omitted -->
+とはいっても、一つ一つの内容は難しいものではないため、必要以上に苦手意識をもつ必要は無い。量をこなせば絶対身につくので、とりあえず手を動かして、コードを書くこと。
+<!-- raw HTML omitted -->
+なお、自前のテキストは中間テストの範囲である基本事項の分のみ作り、それ以降の内容はStevensのスライドを使って解説する。</p>
+<h1>Table of Contents</h1>
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#l-01-print-comments">L-01 Print, Comments</a>
+<ul>
+<li><a href="#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E5%AE%9F%E8%A1%8C">プログラムの実行</a></li>
+<li><a href="#print%E3%83%97%E3%83%AA%E3%83%B3%E3%83%88%E5%87%BA%E5%8A%9B">Print（プリント出力）</a></li>
+<li><a href="#comments%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">Comments（コメントについて）</a></li>
+</ul>
+</li>
+<li><a href="#l-02-string%E3%81%AEquotes-variables-user-input">L-02 StringのQuotes, Variables, User Input</a>
+<ul>
+<li><a href="#string%E6%96%87%E5%AD%97%E5%88%97%E3%82%92%E5%9B%B2%E3%82%80quotes%E5%BC%95%E7%94%A8%E7%AC%A6">String（文字列）を囲むquotes（引用符）</a></li>
+<li><a href="#variables%E5%A4%89%E6%95%B0">Variables（変数）</a></li>
+<li><a href="#user-input%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%85%A5%E5%8A%9B">User Input（ユーザー入力）</a></li>
+<li><a href="#cf-%E3%83%87%E3%83%BC%E3%82%BF%E5%9E%8Bdata-types">cf. データ型（Data Types）</a></li>
+</ul>
+</li>
+<li><a href="#l-0304-branching-condition-boolean-format-strings-printing-options">L-03&amp;04 Branching, Condition, Boolean, Format strings, Printing options</a>
+<ul>
+<li><a href="#if-elif-else-%E3%81%AB%E3%82%88%E3%82%8Bbranching%E5%88%86%E5%B2%90">if, elif, else によるBranching（分岐）</a></li>
+<li><a href="#condition%E6%9D%A1%E4%BB%B6%E5%BC%8F%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9">Condition（条件式）の書き方</a></li>
+<li><a href="#boolean-variable%E8%AB%96%E7%90%86%E5%80%A4">Boolean variable（論理値）</a></li>
+<li><a href="#format-strings%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%E6%96%87%E5%AD%97%E5%88%97">Format strings（フォーマット文字列）</a></li>
+<li><a href="#printing-options-%E3%83%97%E3%83%AA%E3%83%B3%E3%83%88%E5%87%BA%E5%8A%9B%E3%81%AE%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3">Printing options （プリント出力のオプション）</a></li>
+</ul>
+</li>
+<li><a href="#l-05-for-loops--range">L-05 For loops &amp; range()</a>
+<ul>
+<li><a href="#1-for-loops-%E3%81%A8-range-%E9%96%A2%E6%95%B0%E3%81%AE%E5%9F%BA%E6%9C%AC">1. For loops と range() 関数の基本</a></li>
+<li><a href="#2-range-%E9%96%A2%E6%95%B0%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%A9%9F%E8%83%BD">2. range() 関数の追加機能</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h1>L-01 Print, Comments</h1>
+<h2>プログラムの実行</h2>
+<p>Pythonのプログラムは、上から順に１行ずつ実行される。</p>
+<h2>Print（プリント出力）</h2>
+<p>値や文字列を画面に出力するために使う。</p>
+<pre><code class="language-python">print(&quot;Hello, World!&quot;)
+print(10 * 3)
+</code></pre>
+<blockquote>
+<p>Hello, World!
+<!-- raw HTML omitted -->
+30</p>
+</blockquote>
+<h2>Comments（コメントについて）</h2>
+<p>プログラムはそもそも読みにくい。一流のエンジニアでも、コードだけ読んで理解するのは難しい。
+だから、コードの中にコメントを書いて、コードの目的や処理内容を説明することが非常に重要となる。
+<!-- raw HTML omitted -->
+つまり、あくまでコメントはプログラマのためのコードの補足説明文であり、実際のプログラムには影響を与えない。
+<!-- raw HTML omitted --></p>
+<ul>
+<li>複数行でコメントを書く場合は、コメント文の上下を <code>'''</code> または <code>&quot;&quot;&quot;</code> で囲む。なお、複数行でのコメントは docstring と呼ばれる。</li>
+<li>一行でコメントを書く場合は、コメントの頭に <code>#</code> を使う。<code>#</code> を用いたコメントは、コードの末尾にも書くことができる。</li>
+</ul>
+<pre><code class="language-python">'''
+複数行に渡るコメントは、このように書くことができる
+複数行
+だよ
+'''
+
+# このように、一行のコメントも書くことができる
+print(&quot;Hello, World!&quot;) # コードのあとにコメントを書くこともできる
+</code></pre>
+<!-- raw HTML omitted -->
+<h1>L-02 StringのQuotes, Variables, User Input</h1>
+<h2>String（文字列）を囲むquotes（引用符）</h2>
+<p>Pythonで文字列（string）は、文字や数字、記号の並びのことである。
+文字列を表現するには４つ方法がある。</p>
+<ol>
+<li>シングルクォート（<code>'</code>string<code>'</code>）
+<ul>
+<li>アポストロフィー <code>'</code> をそのまま含められない。含める場合は直前にバックスラッシュ <code>\</code> が必要。(スラッシュ <code>/</code> との違いに注意)</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-python"># シングルクォート
+'Hello'
+'It\'s a pen'  # アポストロフィを含める場合は \ でエスケープ
+</code></pre>
+<ol start="2">
+<li>ダブルクォート（<code>&quot;</code>string<code>&quot;</code>）
+<ul>
+<li>アポストロフィー <code>'</code> をそのまま含められる。</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-python"># ダブルクォート
+&quot;Hello&quot;
+&quot;It's a pen&quot;  # アポストロフィはそのまま使用可能
+&quot;He said \&quot;Hello\&quot;&quot;  # ダブルクォートを含む場合は \ でエスケープ
+</code></pre>
+<ol start="3">
+<li>三重クォート（<code>'''</code>string<code>'''</code> または <code>&quot;&quot;&quot;</code>string<code>&quot;&quot;&quot;</code>）
+<ul>
+<li>シングルクォート <code>'</code> またはダブルクォート <code>&quot;</code> の両方をそのまま含められる。</li>
+<li>複数行の文字列を表現可能。</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-python"># 三重クォート
+# シングルクォートとダブルクォートの両方をそのまま使用可能
+'''It's a &quot;pen&quot;.'''
+'''It's a 'pen'.'''
+&quot;&quot;&quot;It's a 'pen'.&quot;&quot;&quot;
+&quot;&quot;&quot;It's a &quot;pen&quot;.&quot;&quot;&quot;
+
+# 複数行の文字列を表現可能
+text = '''This is
+a multi-line
+string.'''
+</code></pre>
+<ol start="4">
+<li>文字列の結合（String Concatenation）
+<ul>
+<li><code>+</code> 演算子を使って文字列を結合することができる。</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-python">print('H' + 'e' + 'l' + 'l' + 'o')
+print('yah' + 'ooo!')
+print('Hi ' + 'there' + ' ' + 'Bob!') # スペースを入れることもできる
+</code></pre>
+<blockquote>
+<p>Hello
+<!-- raw HTML omitted -->
+yahooo!
+<!-- raw HTML omitted -->
+Hi there Bob!</p>
+</blockquote>
+<h2>Variables（変数）</h2>
+<p>変数は、データを格納するための箱のようなものである。変数には名前がついており、その名前を使ってデータを参照することができる。</p>
+<pre><code class="language-python"># 変数 &quot;a&quot; に値を代入する
+a = 1 + 2
+print(a)
+</code></pre>
+<blockquote>
+<p>3</p>
+</blockquote>
+<pre><code class="language-python">a = 1 + 2
+a = 3 + 4   # 変数に新しい値を代入するため、元の値は上書きされて消える
+print(a)
+</code></pre>
+<blockquote>
+<p>7</p>
+</blockquote>
+<pre><code class="language-python">a = 1
+a = a + 2   # 右辺は「a の値を評価した結果」の 1 を使って， 1 + 2 となる
+print(a)
+</code></pre>
+<blockquote>
+<p>3</p>
+</blockquote>
+<p>通常、Variableは中のデータの情報を表す名前をつける。
+<!-- raw HTML omitted -->
+Variable（変数）にはどんなデータが入っているのかがわかりやすく、ほかと明確に区別できる名前をつけることが非常に重要になってくる。</p>
+<p>その上で、Pythonの変数名は以下のルールに従う必要がある。</p>
+<ul>
+<li>使用可能な文字
+<ul>
+<li>アルファベット: 大文字・小文字（<code>A-Z</code>、<code>a-z</code>）</li>
+<li>数字: 0～9（ただし、先頭には使えない）</li>
+<li>アンダースコア: <code>_</code>（自由に使えるが、特別な意味を持つ場合もある）</li>
+</ul>
+</li>
+<li>使用不可な文字
+<ul>
+<li>スペースや記号（例: <code>@</code>, <code>#</code>, <code>!</code>）は使用不可。</li>
+<li>Pythonの文法で使用されている予約語（<code>if</code>, <code>else</code>, <code>for</code> など）は使えない。</li>
+</ul>
+</li>
+<li>命名の注意点
+<ul>
+<li>先頭に数字は不可</li>
+<li>大文字と小文字は区別される（'apple' と 'Apple' は別の変数）</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python"># 有効な変数名
+x1 = 10                # シンプルな例
+my_variable = 20       # 小文字とアンダースコアを使った例（スネークケース）
+myVariable123 = 30     # キャメルケースを使った例
+MY_VARIABLE = 40       # 大文字のみ（定数として使うことが多い）
+
+# 無効な変数名
+2variable = 10      # 無効: 先頭に数字が使われている
+my-variable = 20    # 無効: ハイフン（`-`）は使用できない
+my variable = 30    # 無効: スペースが含まれている
+if = 40             # 無効: `if`はPythonの予約語
+class = 50          # 無効: `class`も予約語
+my@variable = 60    # 無効: `@`のような記号は使用できない
+variable! = 70      # 無効: `!`のような記号も使用不可
+</code></pre>
+<h2>User Input（ユーザー入力）</h2>
+<p>ユーザーからの入力を受け取るには、<code>input()</code> 関数を使う。</p>
+<pre><code class="language-python"># ユーザーから名前を入力してもらい、入力後、それを表示する
+name = input(&quot;What is your name? &quot;)
+print(&quot;Hello, &quot; + name + &quot;!&quot;)
+</code></pre>
+<p>input()の引数（カッコの中の文字列。ここでは &quot;What is your name? &quot;）は、&quot;<strong>prompt</strong>&quot;（刺激） と呼ばれ、ユーザーに対して表示されるメッセージである。</p>
+<h2>cf. データ型（Data Types）</h2>
+<p>Pythonで扱えるデータ型として、以下のものがある。</p>
+<p>| データ型・関数（変換のため） | 説明                              | 表記例                 |
+|---------------------------|-----------------------------------|------------------------|
+| 整数: <code>int()</code>             | 整数を表す                       | <code>10</code>, <code>-3</code>, <code>0</code>       |
+| 浮動小数点数: <code>float()</code>   | 小数点以下を含む数値を表す       | <code>3.14</code>, <code>-0.1</code>, <code>0.0</code> |
+| 文字列: <code>str()</code>           | 文字の並びを表す <strong>（<code>string()</code>でないことに注意！）</strong> | <code>&quot;Hello&quot;</code>, <code>'World'</code>, <code>&quot;123&quot;</code> |
+| 論理値: <code>bool()</code>          | 条件判断に使います               | <code>True</code>, <code>False</code>       |</p>
+<p>変数に代入されているオブジェクトの型を確認するには、<code>type()</code> 関数を使う。</p>
+<pre><code class="language-python">a = 1
+b = 1/2
+c = &quot;ABC&quot;
+print(type(a))
+print(type(b))
+print(type(c))
+</code></pre>
+<blockquote>
+<p>&lt;class 'int'&gt;
+<!-- raw HTML omitted -->
+&lt;class 'float'&gt;
+<!-- raw HTML omitted -->
+&lt;class 'str'&gt;</p>
+</blockquote>
+<p>関数（<code>int()</code>や<code>str()</code>）はどう使うのか？変換とはどういう意味か？</p>
+<pre><code class="language-python"># 浮動小数点数を整数に変換（小数点以下切り捨て）
+number = int(3.99)
+print(number)  # 出力: 3
+
+# 文字列を浮動小数点数に変換
+decimal = float(&quot;3.14&quot;)
+print(decimal)  # 出力: 3.14
+
+# 整数を文字列に変換
+text = str(123)
+print(text)  # 出力: &quot;123&quot;
+</code></pre>
+<p>応用すると、ユーザーからの入力を数値として扱いたい場合に、<code>int()</code> や <code>float()</code> を使って変換することができる。（ユーザーからの入力は、<code>input()</code> 関数で文字列として扱われるから）</p>
+<pre><code class="language-python"># ユーザーが任意の数値を入力する
+
+# ユーザーからの入力は文字列として扱われてしまう
+num1 = input(&quot;Enter a number: &quot;)
+
+# ユーザーからの入力を整数としてnum2に代入することができる
+num2 = int(input(&quot;Enter another number: &quot;))
+</code></pre>
+<!-- raw HTML omitted -->
+<h1>L-03&amp;04 Branching, Condition, Boolean, Format strings, Printing options</h1>
+<h2>if, elif, else によるBranching（分岐）</h2>
+<p><strong>条件式のあとに、コロン <code>:</code> をつけるのを忘れないように！</strong>
+また、条件式が成立した場合に実行されるブロックは、読みやすさのためインデント（スペース４つ分、左側を空ける）で表現される。</p>
+<pre><code class="language-python"># 例１
+if 条件式:
+    条件式が成立した場合に実行されるブロック
+else:
+    条件式が成立しなかった場合に実行されるブロック
+
+# 例２
+if 条件式１:
+    条件式１が成立した場合に実行されるブロック
+elif 条件式２:
+    条件式１が成立しなかった場合で、条件式２が成立した場合に実行されるブロック
+    elif は、else if の略
+else:
+    すべての条件式が成立しなかった場合に実行されるブロック
+</code></pre>
+<pre><code class="language-python"># 入力された数値が正の数か、負の数か、0かを判定するプログラム
+
+# 数値を入力
+num = int(input(&quot;Enter a number: &quot;))
+
+# 条件判定
+if num &gt; 0:
+    print(&quot;The number is positive.&quot;)  # 正の数の場合
+elif num &lt; 0:
+    print(&quot;The number is negative.&quot;)  # 負の数の場合
+else:
+    print(&quot;The number is zero.&quot;)      # 0の場合
+
+</code></pre>
+<h2>Condition（条件式）の書き方</h2>
+<h3>1. 数値の比較</h3>
+<p>条件の代表的なものは数値の比較である。比較するための演算子は以下の通り。</p>
+<ul>
+<li><code>==</code>: 等しい</li>
+<li><code>!=</code>: 等しくない</li>
+<li><code>&gt;</code>: より大きい</li>
+<li><code>&lt;</code>: より小さい</li>
+<li><code>&gt;=</code>: 以上</li>
+<li><code>&lt;=</code>: 以下</li>
+</ul>
+<p>数学の記号と基本的に同じだが、<strong>等しいことを表す記号は <code>=</code> ではなく <code>==</code> であることに注意！</strong></p>
+<h3>2. String comparison（文字列の比較）</h3>
+<p>文字列は、辞書順（lexicographical）で比較される。</p>
+<pre><code class="language-python">if &quot;apple&quot; &gt; &quot;banana&quot;:
+    print(&quot;apple は辞書順で banana より後に位置します&quot;)
+else:
+    print(&quot;apple は辞書順で banana より先に位置します&quot;)
+</code></pre>
+<blockquote>
+<p>apple は辞書順で banana より先に位置します</p>
+</blockquote>
+<h3>3. Compound conditions（条件の組み合わせ）</h3>
+<p>複数の条件を組み合わせるために、論理演算子 <code>and</code>, <code>or</code>, <code>not</code> が用意されている。
+数学の式と同じように、括弧 <code>()</code> の中の条件式が最初に評価される。</p>
+<ul>
+<li><code>and</code>: 日本語で言うと「かつ」。両方の条件が成立する場合にTrue。</li>
+</ul>
+<pre><code class="language-python"># 天気（weather）が晴れ（sunny）かつ、気温（temp）が暖かい（warm）場合
+if weather == 'sunny' and temp == 'warm':
+</code></pre>
+<ul>
+<li><code>or</code>: 日本語で言うと「または」。どちらかの条件が成立する場合にTrue。</li>
+</ul>
+<pre><code class="language-python"># 天気（weather）が雨（rainy）または、気温（temp）が寒い（cold）場合
+if weather == 'rainy' or temp == 'cold':
+</code></pre>
+<ul>
+<li><code>not</code>: 日本語で言うと「でない」。単に条件を反転させる。</li>
+</ul>
+<pre><code class="language-python"># 天気（weather）が晴れ（sunny）かつ、気温（temp）が暖かい（warm）でない場合
+if not (weather == 'sunny' and temp == 'warm'):
+</code></pre>
+<h3>4. 演算の優先順位</h3>
+<p>なお、Pythonでは演算子に優先順位があり、</p>
+<ul>
+<li>算術演算（<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>**</code>）は 比較演算（<code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>!=</code>）よりも優先されます。</li>
+<li>比較演算（<code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>!=</code>）は 論理演算（<code>and</code>, <code>or</code>, <code>not</code>）よりも優先されます。</li>
+</ul>
+<pre><code class="language-python"># 算術演算が比較演算より優先
+result = 3 + 2 &gt; 4  # まず 3 + 2 が計算され、その後 &gt; 4 が評価される
+print(result)  # 出力: True
+
+# 比較演算が論理演算より優先
+result = 5 &gt; 3 and 2 &lt; 4  # まず 5 &gt; 3 と 2 &lt; 4 が評価され、その後 and が適用される
+print(result)  # 出力: True
+</code></pre>
+<p>ここらへんは直感的にわかると思うので、難しく考える必要はない。
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+そして、結構大事なのは<strong>プログラムを読みやすくするためにカッコ <code>()</code> で明示的に優先順位を示すこと</strong>である。</p>
+<pre><code class="language-python"># どちらも動作は同じだが、下のコードの方が読みやすいだろう
+a == 1 and b != 0
+(a == 1) and (b != 0)
+</code></pre>
+<h2>Boolean variable（論理値）</h2>
+<p>Boolean（ブーリアン）とは、True（真）または False（偽）の値を持つデータ型である。（<code>int</code> や <code>str</code> と同じ扱い）
+普通に、条件が成立するかどうかを判定するために使われるだけで、難しく考える必要はない。
+条件式の結果も、True または False という論理値を返す（下の例参照）。</p>
+<pre><code class="language-python">x = 15
+if x &gt;= 10: # x が 10 以上の場合、条件式は True を返す
+two_digits = True # two_digits に boolean値の True を代入
+else:
+two_digits = False # two_digits に boolean値の False を代入
+
+print(two_digits) # 出力: True
+</code></pre>
+<p>ややこしい例を挙げると、以下のようなものがある。</p>
+<pre><code class="language-python"># 例１: 数字が 0 かどうかを判定するプログラム
+num = 0
+is_zero = num == 0  # num が 0 と等しい場合、is_zero に True を代入
+print(is_zero)  # 出力: True
+
+# 例２: 数値が50以上かつ100未満であることを判定するプログラム
+num = 70
+is_between_50_and_100 = 50 &lt;= num and num &lt; 100
+print(is_between_50_and_100)  # 出力: True
+
+# 例３: 子供で、かつ女性であることを判定するプログラム
+age = 13
+is_male = False
+is_minor_and_female = age &lt; 18 and not is_male
+# わかりやすく書くと
+# is_minor_and_female = (age &lt; 18) and (not is_male) となる
+print(is_minor_and_female)  # 出力: True
+
+# 例４: Boolean variable は、if文やelif文の条件式としても使える
+two_digits = True
+if two_digits:
+    print(&quot;The number is two digits long.&quot;)
+</code></pre>
+<pre><code class="language-python"># なお、よくある間違いとして、
+if a &lt;= b &lt;= c:
+# という条件式があるが、「三方向比較」はPythonではダメである。正しくは、
+if a &lt;= b and b &lt;= c:
+</code></pre>
+<h2>Format strings（フォーマット文字列）</h2>
+<p>Pythonのフォーマット文字列（f-strings）は、値を効率的かつ簡単に整形して出力するための方法。フォーマット文字列では、f を文字列の前に置き、文字列中に {} を使って変数や式を埋め込むことができる。</p>
+<ul>
+<li><code>f&quot;...&quot;</code> の形式で文字列を定義</li>
+<li><code>{}</code> の中に変数や式を入れて出力</li>
+</ul>
+<p>イメージとしては、<code>{}</code> の中の変数や式が、実行時にその値に置き換わり、それ以外の <code>&quot; &quot;</code> の中の文字列はそのまんま出力される、と考えるとわかりやすい。</p>
+<pre><code class="language-python">x = 5
+y = 10
+print(f'x = {x}')
+print(f'10x^2 = {10 * x ** 2}')
+print(f'x = {x}, y = {y}, sum = {x + y}')   # 複数の {} を使うことも可能
+</code></pre>
+<blockquote>
+<p>x = 5
+<!-- raw HTML omitted -->
+10x^2 = 250
+<!-- raw HTML omitted -->
+x = 5, y = 10, sum = 15</p>
+</blockquote>
+<h2>Printing options （プリント出力のオプション）</h2>
+<p><code>print()</code> 関数には、いくつかのオプションが用意されている。</p>
+<h3>1. 複数の要素をカンマ ',' を使って区切って出力する</h3>
+<p>カンマ <code>,</code> を使って複数の要素を区切ると、自動的にスペースが挿入される。</p>
+<pre><code class="language-python">print(&quot;I'm&quot;, 2024-1976, &quot;years old.&quot;)
+</code></pre>
+<blockquote>
+<p>I'm 48 years old.</p>
+</blockquote>
+<h3>3. sep を使って区切り文字を指定する</h3>
+<p><code>sep</code> パラメータを使うことで、カンマ <code>,</code> で区切った部分の出力で、自動的にスペースが挿入される部分を自由にカスタマイズすることができる。</p>
+<pre><code class="language-python">print(&quot;I'm&quot;, 2024-1976, &quot;years old.&quot;, sep='/')
+print('Direcroty:', 'home', 'user', sep='/')
+</code></pre>
+<blockquote>
+<p>I'm/48/years old.
+<!-- raw HTML omitted -->
+Direcroty:/home/user</p>
+</blockquote>
+<h3>3. end を使って同じ行に出力する</h3>
+<p>通常 <code>print()</code> を使うと、各出力のあとに自動的に改行が挿入される。しかし、<code>end=''</code> を指定すると、改行されず、次の出力が同じ行に続けて表示される。</p>
+<pre><code class="language-python">print('Installing your program...', end='')
+print('done')
+</code></pre>
+<blockquote>
+<p>Installing your program...done</p>
+</blockquote>
+<h3>sep と end の応用</h3>
+<p><code>sep</code> と <code>end</code> を組み合わせることで、さらに出力をカスタマイズすることができる。</p>
+<pre><code class="language-python">print('Installing', '...', sep='', end='Done\n')
+print('Starting the next operation')
+</code></pre>
+<blockquote>
+<p>Installing...Done
+<!-- raw HTML omitted -->
+Starting the next operation</p>
+</blockquote>
+<h3>4. Escape sequence</h3>
+<p>Escape sequenceは、文字列内に特殊な文字や機能を埋め込むための2文字のコードである。Pythonでは、<code>\</code>（バックスラッシュ）を使う。
+<!-- raw HTML omitted --></p>
+<p>主なEscape sequenceは以下の通り。</p>
+<ul>
+<li><code>\n</code>: 改行を挿入する</li>
+</ul>
+<pre><code class="language-python">print('1\n2\n3')
+
+# 出力
+# 1
+# 2
+# 3
+</code></pre>
+<ul>
+<li><code>\t</code>: タブ（スペースより広い空白、一般的にスペース４個分）を挿入する</li>
+</ul>
+<pre><code class="language-python">print('1\t2\t3')
+
+# 出力
+# 1    2    3
+</code></pre>
+<ul>
+<li><code>\\</code>: バックスラッシュ <code>\</code> を出力する（バックスラッシュのままではエラーになる）</li>
+</ul>
+<pre><code class="language-python">print('C:\\Program Files\\Python')
+
+# 出力
+# C:\Program Files\Python
+</code></pre>
+<ul>
+<li><code>\'</code>: シングルクォート <code>'</code> を出力する</li>
+</ul>
+<pre><code class="language-python"># print('It's a sunny day.') だとシングルクォートで囲まれた中でシングルクォートが使われているためエラーになる！
+
+print('It\'s a sunny day.')
+
+# 出力
+# It's a sunny day.
+</code></pre>
+<ul>
+<li><code>\&quot;</code>: ダブルクォート <code>&quot;</code> を出力する</li>
+</ul>
+<pre><code class="language-python">print(&quot;She said \&quot;Hello\&quot;&quot;)
+
+# 出力
+# She said &quot;Hello&quot;
+</code></pre>
+<h1>L-05 For loops &amp; range()</h1>
+<p>プログラミングによりコンピュータが威力を発揮するのは、多くの処理を速い速度で実施できるときである。ここでは、for文を使って、繰り返しを自動化する方法を紹介する。</p>
+<h2>1. For loops と range() 関数の基本</h2>
+<p><code>for</code> ループとは、<strong>特定の回数</strong>だけコードを繰り返したいときに使用する。</p>
+<pre><code class="language-python"># 文法
+for ループ変数 in range(回数):
+    body（繰り返し処理）
+
+# 例１
+for i in range(5):
+    print('hi', end='') # 出力: hihihihihi
+
+# 例２
+for i in range(3):
+    print(f'#{i + 1}', end='') # 出力: #1#2#3
+</code></pre>
+<p><code>range()</code> という関数は、0から指定した回数-1までの範囲の数値を生成する。つまり、例１のrange(5)という関数は、0 から「添え字の値 - 1」 の「4」までの 5 個の<code>値</code>を生成する関数で，for 文は生成された値を変数 i に入れて，body（繰り返し処理）の部分を繰り返し実行する。
+<!-- raw HTML omitted -->
+したがって、range(n) の範囲でのループ変数 i のカウントの流れは以下の通りとなる。</p>
+<ul>
+<li>1回目: i = 0</li>
+<li>2回目: i = 1</li>
+<li>3回目: i = 2</li>
+<li>n回目: i = n - 1</li>
+</ul>
+<p>これを踏まえると、例２の処理が理解できるだろう。</p>
+<pre><code class="language-python"># 例３: 正の整数を入力し、1 からその数までの合計を求めるプログラム
+n = int(input('Enter positive number: '))
+if n &gt; 0:
+    sum = 0
+    for x in range(n):
+        sum = sum + x + 1
+    print(f'The sum from 1 to {n} is {sum}')
+else:
+    print('The number is not positive.')
+</code></pre>
+<h2>2. range() 関数の追加機能</h2>
+<h3>range(start, end) の使い方</h3>
+<p><code>range(start, end)</code> を使うことで、特定の範囲内の数値を生成できる。</p>
+<pre><code class="language-python"># 文法
+for i in range(start, end):
+    処理
+
+</code></pre>
+<ul>
+<li><code>start</code>: 開始値（含まれる）</li>
+<li><code>end</code>: 終了値（含まれない）</li>
+<li>生成される値: <code>start</code> から <code>end - 1</code> までの数値</li>
+<li>繰り返し回数: <code>end - start</code></li>
+</ul>
+<pre><code class="language-python"># 例１
+for i in range(1, 5):
+    print(i, end='') 
+# 出力: 1234
+
+# 例２
+for i in range(10, 15):
+    print(i, end=', ')
+# 出力: 10, 11, 12, 13, 14
+
+# 例３: 100から200までの合計を求めるプログラム
+sum = 0
+for i in range(100, 201):   # 100～200を生成
+    sum = sum + i 
+print(f'The sum from 100 to 200 is {sum}')
+# 出力: The sum from 100 to 200 is 15150
+</code></pre>
+<h3>range(start, end, increment) の使い方</h3>
+<p><code>range(start, end, increment)</code> を使うことで、指定したincrement（間隔）で値を生成できる。</p>
+<pre><code class="language-python"># 文法
+for i in range(start, end, increment):
+    処理
+</code></pre>
+<ul>
+<li><code>increment</code>: 増加量（負の値にすると、減少する値も生成可能）</li>
+<li>繰り返し回数: <code>floor((end - start) / increment)</code></li>
+</ul>
+<pre><code class="language-python"># 例: 3の倍数の合計を求めるプログラム
+sum = 0
+for i in range(3, 301, 3):  # 3～300の3の倍数を生成
+    sum = sum + i
+print(f'The sum of the first 100 multiples of 3 is {sum}.')
+# 出力: The sum of the first 100 multiples of 3 is 15050.
+</code></pre>
+<p>なお、実際は <code>range(start, end)</code> や、<code>range(start, end, increment)</code> を使うことはあまりなく、覚えておく必要はそんなに無いのだが、試験に出るかどうかとなると話は全く変わってくるため、一応理解しておく必要がある。</p>
